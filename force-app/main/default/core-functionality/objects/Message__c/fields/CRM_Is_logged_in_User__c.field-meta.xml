@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Is_logged_in_User__c</fullName>
+    <description
+    >Will return true if the logged in user is the same as Recipient. Used for List view Filtering, not to be shown</description>
+    <externalId>false</externalId>
+    <formula>$User.Id == CRM_From_User__c || $User.ContactId == CRM_From_Contact__c </formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is logged in User</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

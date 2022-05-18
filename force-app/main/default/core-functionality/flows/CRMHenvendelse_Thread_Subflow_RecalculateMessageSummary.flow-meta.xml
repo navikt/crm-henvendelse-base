@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <assignments>
+        <name>Assign_thread_Id</name>
+        <label>Assign thread Id</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <assignmentItems>
+            <assignToReference>Thread.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>threadId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue/>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Message</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_values</name>
+        <label>Set values</label>
+        <locationX>264</locationX>
+        <locationY>518</locationY>
+        <assignmentItems>
+            <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>MessageSummaryText</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Thread.CRM_Latest_Message_Datetime__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Message.CRM_Sent_Datetime_Formula__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Message</targetReference>
+        </connector>
+    </assignments>
+    <description>Find all messages related to a thread and generate a new Conversation Summary
+Set the Latest Message Date Time based on the latest message</description>
+    <formulas>
+        <description>generates text for events</description>
+        <name>Message_Text_Formula</name>
+        <dataType>String</dataType>
+        <expression>IF(ISPICKVAL({!Message.CRM_Type__c},&apos;Event&apos;),
+     IF(ISPICKVAL({!Message.CRM_Event_Type__c},&apos;END_OF_CHAT&apos;),
+        &apos;Samtalen ble avsluttet&apos;,
+        IF(OR(ISPICKVAL({!Message.CRM_Event_Type__c},&apos;QUEUE_TRANSFER&apos;),ISPICKVAL({!Message.CRM_Event_Type__c},&apos;UNIT_TRANSFER&apos;)),
+            &apos;Samtalen er overført til avdeling &apos; + {!Message.CRM_Message_Text__c},
+            {!Message.CRM_Message_Text__c}
+        )
+     ),
+{!Message.CRM_Message_Text__c})</expression>
+    </formulas>
+    <formulas>
+        <name>SenderNameFormula</name>
+        <dataType>String</dataType>
+        <expression>IF({!Message.CRM_External_Message__c},
+{!Message.CRM_From_First_Name__c},
+IF(ISBLANK({!Message.CRM_From_Ident_Formula__c}),
+&apos;&apos;,
+{!Message.CRM_From_First_Name__c} +&apos;(&apos; + {!Message.CRM_From_Ident_Formula__c} + &apos;)&apos;
+)
+)</expression>
+    </formulas>
+    <interviewLabel>Thread - Sub Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Thread - Subflow - Recalculate Message Summary</label>
+    <loops>
+        <name>Message</name>
+        <label>Message</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <collectionReference>Message_Collection</collectionReference>
+        <iterationOrder>Desc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Set_values</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_thread</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Message_Collection</name>
+        <label>Message Collection</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_thread_Id</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CRM_Thread__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>threadId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Message__c</object>
+        <sortField>CRM_Sent_Datetime_Formula__c</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_thread</name>
+        <label>Update thread</label>
+        <locationX>176</locationX>
+        <locationY>734</locationY>
+        <inputReference>Thread</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Message_Collection</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>MessageSummaryText</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;b&gt;{!Message.CRM_Sent_Datetime_Formula__c}&lt;/b&gt;&lt;/p&gt;&lt;p&gt;{!Message_Text_Formula}&lt;/p&gt;&lt;p&gt;{!SenderNameFormula} &lt;/p&gt;&lt;br&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>lastMessageDate</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>summaryString</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Thread</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Thread__c</objectType>
+    </variables>
+    <variables>
+        <name>threadId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

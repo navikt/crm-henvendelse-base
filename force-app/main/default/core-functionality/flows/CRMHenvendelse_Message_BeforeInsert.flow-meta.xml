@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <assignments>
+        <name>Assign_values</name>
+        <label>Assign values</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CRM_External_Message__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>IsExternal</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CRM_From_Label__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>FromLabel</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Date_Time_Sent</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Sent_Time</name>
+        <label>Set Sent Time</label>
+        <locationX>308</locationX>
+        <locationY>551</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CRM_Sent_date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_Date_Time_Sent</name>
+        <label>Check Date Time Sent</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Set_Sent_Time</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Sent Time Not Set</defaultConnectorLabel>
+        <rules>
+            <name>Sent_Time_Set</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CRM_Sent_date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Sent Time Set</label>
+        </rules>
+    </decisions>
+    <description>Set the fields external message and the From label</description>
+    <formulas>
+        <name>FromLabel</name>
+        <dataType>String</dataType>
+        <expression>IF(
+	{!IsExternal},
+	IF(
+		{!$Record.CRM_From_User__c} != null,
+		IF(
+			{!$Record.CRM_From_User__r.Alias} != null,
+			{!$Record.CRM_From_User__r.Alias},
+			{!$Record.CRM_From_User__r.FirstName}
+		),
+		{!$Record.CRM_From_Contact__r.FirstName}
+	),
+	{!$User.NKS_GreetingName__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>IsExternal</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT(ISBLANK({!$Record.CRM_From_Contact__c}))</expression>
+    </formulas>
+    <interviewLabel>Message - Before Insert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Message - Before Insert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_values</targetReference>
+        </connector>
+        <object>Message__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Original_Person_NAV_Unit__c</fullName>
+    <description>The persons local NAV Unit when the thread was created. Used for office restriction functionality.</description>
+    <externalId>false</externalId>
+    <label>Original Person NAV Unit</label>
+    <length>4</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
