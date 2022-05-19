@@ -12,12 +12,20 @@
                     "versionNumber": "0.151.0.LATEST"
                 }
             ]
+        },
+        {
+            "path": "force-app",
+            "package": "YourPackageName",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false
         }
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "54.0",
     "packageAliases": {
-        "crm-platform-base": "0Ho2o0000008ORmCAM"
+        "crm-platform-base": "0Ho2o0000008ORmCAM",
+        "crm-henvendelse-base": "0Ho7U000000000kSAA"
     }
 }
