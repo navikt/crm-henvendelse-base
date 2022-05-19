@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Disposal_Datetime__c</fullName>
+    <description>Datetime for when the record if marked for disposal and the written contents will be should be removed.</description>
+    <externalId>false</externalId>
+    <label>Disposal Datetime</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

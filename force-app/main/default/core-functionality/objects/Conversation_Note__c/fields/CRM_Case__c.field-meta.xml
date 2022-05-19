@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Case__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>If conversation note is related to i.e. an inbound call case.</description>
+    <externalId>false</externalId>
+    <label>Case</label>
+    <referenceTo>Case</referenceTo>
+    <relationshipLabel>Conversation Notes</relationshipLabel>
+    <relationshipName>Conversation_Notes</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
