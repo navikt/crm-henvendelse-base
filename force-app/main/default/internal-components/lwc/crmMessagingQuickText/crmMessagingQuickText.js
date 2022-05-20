@@ -280,7 +280,7 @@ export default class crmQuickText extends LightningElement {
                 .substring(0, carretPositionEnd)
                 .replace(/(\r\n|\n|\r)/g, ' ')
                 .trim()
-                .split(' ')
+                .split(" ")
                 .pop();
             const abbreviation = lastItem.toUpperCase();
             const obj = this.qmap.get(abbreviation);
@@ -291,7 +291,7 @@ export default class crmQuickText extends LightningElement {
                 const startindex = carretPositionEnd - lastItem.length - 1;
 
                 if (isCaseSensitive) {
-                    const words = quickText.split(' ');
+                    const words = quickText.split(" ");
 
                     if (lastItem.charAt(0) === lastItem.charAt(0).toLowerCase()) {
                         words[0] = words[0].toLowerCase();
