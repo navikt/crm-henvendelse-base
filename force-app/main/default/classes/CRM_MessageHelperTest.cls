@@ -31,6 +31,13 @@ public with sharing class CRM_MessageHelperTest {
         System.assertEquals('Account', objectType, 'Object type is not recoginzed as expected');
     }
     @isTest
+    static void getUserContactId() {
+        Test.startTest();
+        String contactId = CRM_MessageHelper.getUserContactId();
+        Test.stopTest();
+        System.assertEquals(null, contactId, 'User Contact Id was not returned correctly');
+    }
+    @isTest
     static void getThreadsCollectionSingleTest() {
         List<Account> accList = [SELECT Id FROM Account];
         Test.startTest();
@@ -55,6 +62,15 @@ public with sharing class CRM_MessageHelperTest {
         List<Account> accList = [SELECT Id FROM Account];
         Test.startTest();
         Thread__c t = CRM_MessageHelper.getSingleThread(accList.get(0).Id);
+        Test.stopTest();
+        System.assertNotEquals(null, t);
+    }
+    @isTest
+    static void getThreadFromIdTest() {
+        Thread__c thread = new Thread__c();
+        insert thread;
+        Test.startTest();
+        Thread__c t = CRM_MessageHelper.getThreadFromThreadId(thread.Id);
         Test.stopTest();
         System.assertNotEquals(null, t);
     }
