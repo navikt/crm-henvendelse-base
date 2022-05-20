@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Is_Redacted__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When checked this message has been redacted</description>
+    <externalId>false</externalId>
+    <label>Is Redacted</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

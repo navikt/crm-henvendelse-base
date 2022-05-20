@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Redaction_Person_Ident__c</fullName>
+    <externalId>false</externalId>
+    <formula>CRM_Account__r.CRM_Person__r.Name</formula>
+    <label>Person Ident</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Office_Restriction__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Determines if the conversation note read access is restricted to the original NAV office.</description>
+    <externalId>false</externalId>
+    <label>Office Restriction</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

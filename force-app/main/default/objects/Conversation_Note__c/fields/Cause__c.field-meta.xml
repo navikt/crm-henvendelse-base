@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cause__c</fullName>
+    <description>Causes for redacting/discarding of conversation notes</description>
+    <externalId>false</externalId>
+    <label>Cause</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sendt feil bruker</fullName>
+                <default>false</default>
+                <label>Sendt feil bruker</label>
+            </value>
+            <value>
+                <fullName>Annen årsak</fullName>
+                <default>false</default>
+                <label>Annen årsak</label>
+            </value>
+            <value>
+                <fullName>Økonomisk sosialhjelp</fullName>
+                <default>false</default>
+                <label>Økonomisk sosialhjelp</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

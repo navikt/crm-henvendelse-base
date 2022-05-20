@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Original_Person_GT__c</fullName>
+    <description>The persons GT (Geografisk tilhørighet) when the thread was created. Used for office restriction functionality.</description>
+    <externalId>false</externalId>
+    <label>Original Person GT</label>
+    <length>6</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

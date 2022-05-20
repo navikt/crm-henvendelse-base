@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Incorrectly_Sent__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Marking if the thread was sent incorrectly to NAV.</description>
+    <externalId>false</externalId>
+    <label>Incorrectly Sent</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>
