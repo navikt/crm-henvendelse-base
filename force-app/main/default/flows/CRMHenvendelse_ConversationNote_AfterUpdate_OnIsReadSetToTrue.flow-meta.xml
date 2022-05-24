@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <description>If the conversation note is set to read call the subflow &quot;User Notification - Create Done Event From Related Record Id&quot;</description>
+    <formulas>
+        <name>ReadDate</name>
+        <dataType>DateTime</dataType>
+        <expression>IF({!$Record.CRM_Read_Date__c} == null, {!$Flow.CurrentDateTime}, {!$Record.CRM_Read_Date__c})</expression>
+    </formulas>
+    <interviewLabel>Conversation Note - After Update - On Is Read Set To True {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Conversation Note - After Update - On Is Read Set To True</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CRM_Is_Read__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Conversation_Note__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Create_DONE_Event</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Create_DONE_Event</name>
+        <label>Create DONE Event</label>
+        <locationX>308</locationX>
+        <locationY>288</locationY>
+        <flowName>UN_UserNotificationCreateDoneEventFromRelatedRecordId</flowName>
+        <inputAssignments>
+            <name>DoneDateTime</name>
+            <value>
+                <elementReference>ReadDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>RelatedRecordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>systemuser</name>
+            <value>
+                <elementReference>$Label.CRMHenvendelse_SystemUser</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>
