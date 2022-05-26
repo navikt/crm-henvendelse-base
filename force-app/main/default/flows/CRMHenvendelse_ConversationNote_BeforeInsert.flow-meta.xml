@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <assignments>
+        <name>Assign_Person_Values</name>
+        <label>Assign Person Values</label>
+        <locationX>50</locationX>
+        <locationY>551</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.INT_PersonIdent__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Person.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.INT_ActorId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Person.INT_ActorId__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Date_Time_Registered</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Datetime_Registered</name>
+        <label>Set Datetime Registered</label>
+        <locationX>314</locationX>
+        <locationY>887</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CRM_Date_Time_Registered__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_Date_Time_Registered</name>
+        <label>Check Date Time Registered</label>
+        <locationX>182</locationX>
+        <locationY>767</locationY>
+        <defaultConnector>
+            <targetReference>Set_Datetime_Registered</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Datetime Not Set</defaultConnectorLabel>
+        <rules>
+            <name>Datetime_Set</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CRM_Date_Time_Registered__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Datetime Set</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_person_idents_on_conv_note</name>
+        <label>Check person idents on conv note</label>
+        <locationX>182</locationX>
+        <locationY>311</locationY>
+        <defaultConnector>
+            <targetReference>Check_Date_Time_Registered</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Has actor id</defaultConnectorLabel>
+        <rules>
+            <name>Missing_actor_id</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.INT_ActorId__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Person</targetReference>
+            </connector>
+            <label>Missing actor id</label>
+        </rules>
+    </decisions>
+    <description>Set values on conversation note on before insert</description>
+    <interviewLabel>Conversation Note - Before Insert {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Conversation Note - Before Insert</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Person</name>
+        <label>Person</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Person_Values</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CRM_Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.CRM_Account__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Person__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_person_idents_on_conv_note</targetReference>
+        </connector>
+        <object>Conversation_Note__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
