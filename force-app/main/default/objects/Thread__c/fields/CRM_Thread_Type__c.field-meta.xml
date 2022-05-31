@@ -46,6 +46,11 @@
                 <default>false</default>
                 <label>AG_MLØNN</label>
             </value>
+            <value>
+                <fullName>HOT</fullName>
+                <default>false</default>
+                <label>HOT</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
