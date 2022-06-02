@@ -5,7 +5,7 @@
             "default": true,
             "package": "crm-henvendelse-base",
             "versionName": "ver 0.1",
-            "versionNumber": "0.4.0.NEXT",
+            "versionNumber": "0.5.0.NEXT",
             "dependencies": [
                 {
                     "package": "crm-platform-base",
@@ -17,7 +17,7 @@
             "path": "force-app",
             "package": "YourPackageName",
             "versionName": "ver 0.1",
-            "versionNumber": "0.4.0.NEXT",
+            "versionNumber": "0.5.0.NEXT",
             "default": false
         }
     ],
