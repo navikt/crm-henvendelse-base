@@ -47,7 +47,7 @@
                 <label>AG_MLØNN</label>
             </value>
             <value>
-                <fullName>HOT</fullName>
+                <fullName>HOT_BRUKER_FORMIDLER</fullName>
                 <default>false</default>
                 <label>HOT</label>
             </value>
