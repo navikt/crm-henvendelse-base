@@ -17,7 +17,7 @@
             <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue/>
+                <stringValue></stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -58,10 +58,11 @@ Set the Latest Message Date Time based on the latest message</description>
         &apos;Samtalen ble avsluttet&apos;,
         IF(OR(ISPICKVAL({!Message.CRM_Event_Type__c},&apos;QUEUE_TRANSFER&apos;),ISPICKVAL({!Message.CRM_Event_Type__c},&apos;UNIT_TRANSFER&apos;)),
             &apos;Samtalen er overført til avdeling &apos; + {!Message.CRM_Message_Text__c},
-            {!Message.CRM_Message_Text__c}
+            SUBSTITUTE({!Message.CRM_Message_Text__c}, MID({!LineBreakString},2,1),&apos;&lt;br&gt;&apos;)
         )
      ),
-{!Message.CRM_Message_Text__c})</expression>
+   SUBSTITUTE({!Message.CRM_Message_Text__c}, MID({!LineBreakString},2,1),&apos;&lt;br&gt;&apos;)
+)</expression>
     </formulas>
     <formulas>
         <name>SenderNameFormula</name>
@@ -146,7 +147,14 @@ IF(ISBLANK({!Message.CRM_From_Ident_Formula__c}),
             <targetReference>Message_Collection</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
+    <textTemplates>
+        <description>dirty hack to substitute linebreak in messages with &lt;br&gt; tag</description>
+        <name>LineBreakString</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>a
+b</text>
+    </textTemplates>
     <textTemplates>
         <name>MessageSummaryText</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
