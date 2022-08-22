@@ -147,7 +147,7 @@ IF(ISBLANK({!Message.CRM_From_Ident_Formula__c}),
             <targetReference>Message_Collection</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <textTemplates>
         <description>dirty hack to substitute linebreak in messages with &lt;br&gt; tag</description>
         <name>LineBreakString</name>
