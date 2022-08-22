@@ -41,6 +41,16 @@
                 <default>false</default>
                 <label>AAREG_INT</label>
             </value>
+            <value>
+                <fullName>AG_MLØNN</fullName>
+                <default>false</default>
+                <label>AG_MLØNN</label>
+            </value>
+            <value>
+                <fullName>HOT_BRUKER-FORMIDLER</fullName>
+                <default>false</default>
+                <label>HOT_BRUKER-FORMIDLER</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

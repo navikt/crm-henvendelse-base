@@ -2,10 +2,10 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>53.0</apiVersion>
     <assignments>
-        <name>Assign_Common_Thread_Values</name>
+        <name>Assign_Common_Thread_Values_0</name>
         <label>Assign Common Thread Values</label>
-        <locationX>182</locationX>
-        <locationY>431</locationY>
+        <locationX>380</locationX>
+        <locationY>311</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Type__c</assignToReference>
             <operator>Assign</operator>
@@ -14,7 +14,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Person</targetReference>
+            <targetReference>Check_Date_Time_Registered_0</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -38,10 +38,10 @@
         </assignmentItems>
     </assignments>
     <assignments>
-        <name>Set_Registered_Datetime</name>
+        <name>Set_Registered_Datetime_0</name>
         <label>Set Registered Datetime</label>
-        <locationX>270</locationX>
-        <locationY>791</locationY>
+        <locationX>468</locationX>
+        <locationY>551</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Date_Time_Registered__c</assignToReference>
             <operator>Assign</operator>
@@ -50,20 +50,20 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Has_Person</targetReference>
+            <targetReference>Check_if_account_exist</targetReference>
         </connector>
     </assignments>
     <decisions>
-        <name>Check_Date_Time_Registered</name>
+        <name>Check_Date_Time_Registered_0</name>
         <label>Check Date Time Registered</label>
-        <locationX>182</locationX>
-        <locationY>671</locationY>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
         <defaultConnector>
-            <targetReference>Set_Registered_Datetime</targetReference>
+            <targetReference>Set_Registered_Datetime_0</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Datetime Not Set</defaultConnectorLabel>
         <rules>
-            <name>Datetime_Set</name>
+            <name>Datetime_Set_0</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.CRM_Date_Time_Registered__c</leftValueReference>
@@ -73,7 +73,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Has_Person</targetReference>
+                <targetReference>Check_if_account_exist</targetReference>
             </connector>
             <label>Datetime Set</label>
         </rules>
@@ -82,7 +82,7 @@
         <name>Check_if_account_exist</name>
         <label>Check if account exist</label>
         <locationX>380</locationX>
-        <locationY>311</locationY>
+        <locationY>767</locationY>
         <defaultConnectorLabel>No account found</defaultConnectorLabel>
         <rules>
             <name>Account_exist</name>
@@ -95,7 +95,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assign_Common_Thread_Values</targetReference>
+                <targetReference>Person</targetReference>
             </connector>
             <label>Account exist</label>
         </rules>
@@ -155,10 +155,10 @@
         <name>Person</name>
         <label>Person</label>
         <locationX>182</locationX>
-        <locationY>551</locationY>
+        <locationY>887</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Check_Date_Time_Registered</targetReference>
+            <targetReference>Has_Person</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -176,7 +176,7 @@
         <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_if_account_exist</targetReference>
+            <targetReference>Assign_Common_Thread_Values_0</targetReference>
         </connector>
         <object>Thread__c</object>
         <recordTriggerType>Create</recordTriggerType>
