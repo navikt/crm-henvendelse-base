@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Antall uleste meldinger av NAV</label>
+    <name>CRM_Number_of_unread_Messages_by_NAV__c</name>
+</CustomFieldTranslation>
