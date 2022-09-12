@@ -4,7 +4,7 @@
     <description>NAV ident of the user creating the thread.</description>
     <externalId>true</externalId>
     <label>Created By Ident</label>
-    <length>7</length>
+    <length>48</length>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>
