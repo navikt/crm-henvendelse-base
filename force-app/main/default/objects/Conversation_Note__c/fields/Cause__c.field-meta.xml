@@ -22,9 +22,9 @@
                 <label>Annen årsak</label>
             </value>
             <value>
-                <fullName>Økonomisk sosialhjelp</fullName>
+                <fullName>Ikke statlig dialog</fullName>
                 <default>false</default>
-                <label>Økonomisk sosialhjelp</label>
+                <label>Ikke statlig dialog</label>
             </value>
         </valueSetDefinition>
     </valueSet>
