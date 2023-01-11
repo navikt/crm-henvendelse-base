@@ -3,42 +3,35 @@
     <caseValues>
         <article>Definite</article>
         <plural>false</plural>
-        <value>Samtalen</value>
+        <value>Samtalereferatet</value>
     </caseValues>
     <caseValues>
         <article>Indefinite</article>
         <plural>false</plural>
-        <value>Samtale</value>
+        <value>Samtalereferat</value>
     </caseValues>
     <caseValues>
         <article>None</article>
         <plural>false</plural>
-        <value>Samtale</value>
+        <value>Samtalereferat</value>
     </caseValues>
     <caseValues>
         <article>Definite</article>
         <plural>true</plural>
-        <value>Samtalene</value>
+        <value>Samtalereferatene</value>
     </caseValues>
     <caseValues>
         <article>Indefinite</article>
         <plural>true</plural>
-        <value>Samtaler</value>
+        <value>Samtalereferater</value>
     </caseValues>
     <caseValues>
         <article>None</article>
         <plural>true</plural>
-        <value>Samtaler</value>
+        <value>Samtalereferater</value>
     </caseValues>
-    <gender>Masculine</gender>
-    <layouts>
-        <layout>Thread Layout</layout>
-        <sections>
-            <label></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
-    <nameFieldLabel>Samtale navn</nameFieldLabel>
+    <gender>Neuter</gender>
+    <nameFieldLabel>Referatnummer</nameFieldLabel>
     <quickActions>
         <label></label>
         <name>Abort_Redaction</name>
@@ -56,11 +49,6 @@
     <quickActions>
         <aspect>Master</aspect>
         <label>Kasser</label>
-        <name>Discard_Messages</name>
-    </quickActions>
-    <quickActions>
-        <aspect>Master</aspect>
-        <label>Sett til sladding</label>
-        <name>Set_to_Redaction</name>
+        <name>Discard_Conversation</name>
     </quickActions>
 </CustomObjectTranslation>

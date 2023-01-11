@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Årsak</label>
+    <name>Cause__c</name>
+    <picklistValues>
+        <masterLabel>Andre årsaker</masterLabel>
+        <translation><!-- Andre årsaker -->
+        </translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sikkerhetshendelse</masterLabel>
+        <translation><!-- Sikkerhetshendelse -->
+        </translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Utenfor NAVs behandlingsområde</masterLabel>
+        <translation><!-- Utenfor NAVs behandlingsområde -->
+        </translation>
+    </picklistValues>
+</CustomFieldTranslation>
