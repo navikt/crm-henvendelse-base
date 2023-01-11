@@ -32,23 +32,4 @@
     </caseValues>
     <gender>Neuter</gender>
     <nameFieldLabel>Referatnummer</nameFieldLabel>
-    <quickActions>
-        <label></label>
-        <name>Abort_Redaction</name>
-    </quickActions>
-    <quickActions>
-        <aspect>Master</aspect>
-        <label>Fullfør sladding</label>
-        <name>Complete_Redaction</name>
-    </quickActions>
-    <quickActions>
-        <aspect>Master</aspect>
-        <label>Opprett oppgave</label>
-        <name>Redaction_Create_NAV_Task</name>
-    </quickActions>
-    <quickActions>
-        <aspect>Master</aspect>
-        <label>Kasser</label>
-        <name>Discard_Conversation</name>
-    </quickActions>
 </CustomObjectTranslation>
