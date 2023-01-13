@@ -3,32 +3,33 @@
     <caseValues>
         <article>Definite</article>
         <plural>false</plural>
-        <value>Samtalen</value>
+        <value>Meldingen</value>
     </caseValues>
     <caseValues>
         <article>Indefinite</article>
         <plural>false</plural>
-        <value>Samtale</value>
+        <value>Melding</value>
     </caseValues>
     <caseValues>
         <article>None</article>
         <plural>false</plural>
-        <value>Samtale</value>
+        <value>Melding</value>
     </caseValues>
     <caseValues>
         <article>Definite</article>
         <plural>true</plural>
-        <value>Samtalene</value>
+        <value>Meldingene</value>
     </caseValues>
     <caseValues>
         <article>Indefinite</article>
         <plural>true</plural>
-        <value>Samtaler</value>
+        <value>Meldinger</value>
     </caseValues>
     <caseValues>
         <article>None</article>
         <plural>true</plural>
-        <value>Samtaler</value>
+        <value>Meldinger</value>
     </caseValues>
     <gender>Masculine</gender>
+    <nameFieldLabel>Meldings id</nameFieldLabel>
 </CustomObjectTranslation>

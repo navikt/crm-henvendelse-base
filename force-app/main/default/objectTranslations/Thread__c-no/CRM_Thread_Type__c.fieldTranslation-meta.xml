@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Type</label>
+    <name>CRM_Thread_Type__c</name>
+    <picklistValues>
+        <masterLabel>AAREG_EXP</masterLabel>
+        <translation><!-- AAREG_EXP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AAREG_INT</masterLabel>
+        <translation><!-- AAREG_INT --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>DEFAULT</masterLabel>
+        <translation><!-- DEFAULT --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>STB</masterLabel>
+        <translation><!-- STB --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>STO</masterLabel>
+        <translation><!-- STO --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

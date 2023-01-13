@@ -3,32 +3,33 @@
     <caseValues>
         <article>Definite</article>
         <plural>false</plural>
-        <value>Samtalen</value>
+        <value>Samtalereferatet</value>
     </caseValues>
     <caseValues>
         <article>Indefinite</article>
         <plural>false</plural>
-        <value>Samtale</value>
+        <value>Samtalereferat</value>
     </caseValues>
     <caseValues>
         <article>None</article>
         <plural>false</plural>
-        <value>Samtale</value>
+        <value>Samtalereferat</value>
     </caseValues>
     <caseValues>
         <article>Definite</article>
         <plural>true</plural>
-        <value>Samtalene</value>
+        <value>Samtalereferatene</value>
     </caseValues>
     <caseValues>
         <article>Indefinite</article>
         <plural>true</plural>
-        <value>Samtaler</value>
+        <value>Samtalereferater</value>
     </caseValues>
     <caseValues>
         <article>None</article>
         <plural>true</plural>
-        <value>Samtaler</value>
+        <value>Samtalereferater</value>
     </caseValues>
-    <gender>Masculine</gender>
+    <gender>Neuter</gender>
+    <nameFieldLabel>Referatnummer</nameFieldLabel>
 </CustomObjectTranslation>

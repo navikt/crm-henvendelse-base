@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Journalføring status</label>
+    <name>CRM_Journal_Status__c</name>
+    <picklistValues>
+        <masterLabel>Journal Completed</masterLabel>
+        <translation>Journalført</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Journal Error</masterLabel>
+        <translation>Journalføring feilet</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Journal Started</masterLabel>
+        <translation>Journalføring registrert</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Journaled</masterLabel>
+        <translation>Ikke journalført</translation>
+    </picklistValues>
+</CustomFieldTranslation>
