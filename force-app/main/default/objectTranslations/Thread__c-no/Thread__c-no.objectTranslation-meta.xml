@@ -31,4 +31,5 @@
         <value>Samtaler</value>
     </caseValues>
     <gender>Masculine</gender>
+    <nameFieldLabel>Samtale navn</nameFieldLabel>
 </CustomObjectTranslation>
