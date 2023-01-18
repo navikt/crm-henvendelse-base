@@ -4,7 +4,7 @@
     <description>NAV ident of the user who last made an edit to the record.</description>
     <externalId>true</externalId>
     <label>Last Edited By</label>
-    <length>7</length>
+    <length>48</length>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>

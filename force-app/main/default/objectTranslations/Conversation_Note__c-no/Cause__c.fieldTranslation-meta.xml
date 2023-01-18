@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Årsak</label>
+    <name>Cause__c</name>
+    <picklistValues>
+        <masterLabel>Annen årsak</masterLabel>
+        <translation>
+            <!-- Annen årsak -->
+        </translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sendt feil bruker</masterLabel>
+        <translation>
+            <!-- Sendt feil bruker -->
+        </translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -16,9 +16,14 @@
                 <label>Utenfor NAVs behandlingsområde</label>
             </value>
             <value>
-                <fullName>Økonomisk sosialhjelp</fullName>
+                <fullName>Ikke statlig dialog</fullName>
                 <default>false</default>
-                <label>Økonomisk sosialhjelp</label>
+                <label>Ikke statlig dialog</label>
+            </value>
+            <value>
+                <fullName>Sendt feil bruker</fullName>
+                <default>false</default>
+                <label>Sendt feil bruker</label>
             </value>
             <value>
                 <fullName>Andre årsaker</fullName>
