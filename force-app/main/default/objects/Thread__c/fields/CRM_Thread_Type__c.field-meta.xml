@@ -57,6 +57,31 @@
                 <default>false</default>
                 <label>BTO</label>
             </value>
+            <value>
+                <fullName>HOT_BRUKER-TOLK</fullName>
+                <default>false</default>
+                <label>HOT_BRUKER-TOLK</label>
+            </value>
+            <value>
+                <fullName>HOT_BESTILLER-FORMIDLER</fullName>
+                <default>false</default>
+                <label>HOT_BESTILLER-FORMIDLER</label>
+            </value>
+            <value>
+                <fullName>HOT_TOLK-FORMIDLER</fullName>
+                <default>false</default>
+                <label>HOT_TOLK-FORMIDLER</label>
+            </value>
+            <value>
+                <fullName>HOT_TOLK-RESSURSKONTOR</fullName>
+                <default>false</default>
+                <label>HOT_TOLK-RESSURSKONTOR</label>
+            </value>
+            <value>
+                <fullName>HOT_BRUKER-BESTILLER</fullName>
+                <default>false</default>
+                <label>HOT_BRUKER-BESTILLER</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
