@@ -43,7 +43,7 @@
         <connector>
             <targetReference>Set_NAV_Unit</targetReference>
         </connector>
-        <filterLogic>1 AND 2 AND (3 OR 4) AND 5</filterLogic>
+        <filterLogic>1 AND 2 AND (3 OR 4 OR 5) AND 6</filterLogic>
         <filters>
             <field>CRM_External_Message__c</field>
             <operator>EqualTo</operator>
@@ -70,6 +70,13 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>STB</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CRM_Thread_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>BTO</stringValue>
             </value>
         </filters>
         <filters>
