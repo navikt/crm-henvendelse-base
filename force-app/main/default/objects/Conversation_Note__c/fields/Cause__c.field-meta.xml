@@ -26,6 +26,11 @@
                 <default>false</default>
                 <label>Ikke statlig dialog</label>
             </value>
+            <value>
+                <fullName>Sensitive personopplysninger</fullName>
+                <default>false</default>
+                <label>Sensitive personopplysninger</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -11,9 +11,19 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
+                <fullName>Sikkerhetshendelse</fullName>
+                <default>false</default>
+                <label>Sikkerhetshendelse</label>
+            </value>
+            <value>
                 <fullName>Utenfor NAVs behandlingsområde</fullName>
                 <default>false</default>
                 <label>Utenfor NAVs behandlingsområde</label>
+            </value>
+            <value>
+                <fullName>Andre årsaker</fullName>
+                <default>false</default>
+                <label>Andre årsaker</label>
             </value>
             <value>
                 <fullName>Ikke statlig dialog</fullName>
@@ -26,15 +36,9 @@
                 <label>Sendt feil bruker</label>
             </value>
             <value>
-                <fullName>Andre årsaker</fullName>
+                <fullName>Sensitive personopplysninger</fullName>
                 <default>false</default>
-                <label>Andre årsaker</label>
-            </value>
-            <value>
-                <fullName>Sikkerhetshendelse</fullName>
-                <default>false</default>
-                <isActive>false</isActive>
-                <label>Sikkerhetshendelse</label>
+                <label>Sensitive personopplysninger</label>
             </value>
         </valueSetDefinition>
     </valueSet>
