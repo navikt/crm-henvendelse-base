@@ -25,9 +25,25 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Set_Latest_Message_DateTime</name>
-        <label>Set Latest Message DateTime</label>
+        <name>Set_Conversation_Summary</name>
+        <label>Set Conversation Summary</label>
         <locationX>264</locationX>
+        <locationY>566</locationY>
+        <assignmentItems>
+            <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>MessageSummaryText</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Message</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_values</name>
+        <label>Set values</label>
+        <locationX>528</locationX>
         <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>Thread.CRM_Latest_Message_Datetime__c</assignToReference>
@@ -36,15 +52,6 @@
                 <elementReference>Message.CRM_Sent_Datetime_Formula__c</elementReference>
             </value>
         </assignmentItems>
-        <connector>
-            <targetReference>Set_values</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Set_values</name>
-        <label>Set values</label>
-        <locationX>396</locationX>
-        <locationY>758</locationY>
         <assignmentItems>
             <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
             <operator>Add</operator>
@@ -64,20 +71,20 @@
         <defaultConnector>
             <targetReference>Set_values</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
         <rules>
-            <name>Yes_end_of_chat</name>
+            <name>No_end_of_chat</name>
             <conditionLogic>(1 OR 2) AND 3</conditionLogic>
             <conditions>
                 <leftValueReference>Message.CRM_Event_Type__c</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>END_OF_CHAT</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <leftValueReference>Message.CRM_Event_Type__c</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>JOURNAL</stringValue>
                 </rightValue>
@@ -90,9 +97,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Set_Latest_Message_DateTime</targetReference>
+                <targetReference>Set_Conversation_Summary</targetReference>
             </connector>
-            <label>Yes</label>
+            <label>No</label>
         </rules>
     </decisions>
     <description>Find all messages related to a thread and generate a new Conversation Summary
@@ -189,7 +196,7 @@
         <name>Update_thread</name>
         <label>Update thread</label>
         <locationX>176</locationX>
-        <locationY>950</locationY>
+        <locationY>842</locationY>
         <inputReference>Thread</inputReference>
     </recordUpdates>
     <start>
