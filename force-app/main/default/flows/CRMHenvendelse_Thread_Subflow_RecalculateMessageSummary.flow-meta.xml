@@ -74,7 +74,7 @@
         <defaultConnectorLabel>Yes</defaultConnectorLabel>
         <rules>
             <name>No_end_of_chat</name>
-            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditionLogic>(1 OR 2) AND (3 OR 4)</conditionLogic>
             <conditions>
                 <leftValueReference>Message.CRM_Event_Type__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -94,6 +94,13 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>STO</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Message.CRM_Thread_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BTO</stringValue>
                 </rightValue>
             </conditions>
             <connector>
