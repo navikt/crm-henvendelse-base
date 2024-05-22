@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STO_Category__c</fullName>
+    <description>Category defined when dialogue is initated from end user. Used for routin among else.</description>
+    <externalId>false</externalId>
+    <label>STO Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>STO_Category</valueSetName>
+    </valueSet>
+</CustomField>
