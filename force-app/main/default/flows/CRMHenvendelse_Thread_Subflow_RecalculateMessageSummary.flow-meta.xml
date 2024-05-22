@@ -27,8 +27,8 @@
     <assignments>
         <name>Set_Conversation_Summary</name>
         <label>Set Conversation Summary</label>
-        <locationX>264</locationX>
-        <locationY>566</locationY>
+        <locationX>352</locationX>
+        <locationY>758</locationY>
         <assignmentItems>
             <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
             <operator>Add</operator>
@@ -43,7 +43,7 @@
     <assignments>
         <name>Set_values</name>
         <label>Set values</label>
-        <locationX>528</locationX>
+        <locationX>440</locationX>
         <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>Thread.CRM_Latest_Message_Datetime__c</assignToReference>
@@ -52,21 +52,14 @@
                 <elementReference>Message.CRM_Sent_Datetime_Formula__c</elementReference>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>MessageSummaryText</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
-            <targetReference>Message</targetReference>
+            <targetReference>Set_Conversation_Summary</targetReference>
         </connector>
     </assignments>
     <decisions>
         <name>Is_end_of_chat</name>
         <label>Set Latest Message Datetime?</label>
-        <locationX>396</locationX>
+        <locationX>352</locationX>
         <locationY>458</locationY>
         <defaultConnector>
             <targetReference>Set_values</targetReference>
@@ -111,7 +104,6 @@
     </decisions>
     <description>Find all messages related to a thread and generate a new Conversation Summary
         Set the Latest Message Date Time based on the latest message</description>
-    <environments>Default</environments>
     <formulas>
         <description>generates text for events</description>
         <name>Message_Text_Formula</name>
@@ -203,7 +195,7 @@
         <name>Update_thread</name>
         <label>Update thread</label>
         <locationX>176</locationX>
-        <locationY>842</locationY>
+        <locationY>950</locationY>
         <inputReference>Thread</inputReference>
     </recordUpdates>
     <start>
