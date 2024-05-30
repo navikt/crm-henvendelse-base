@@ -4,21 +4,17 @@
             "path": "force-app",
             "default": true,
             "package": "crm-henvendelse-base",
-            "versionName": "ver 0.1",
             "versionNumber": "0.20.0.NEXT",
             "dependencies": [
                 {
                     "package": "crm-platform-base",
                     "versionNumber": "0.218.0.LATEST"
+                },
+                {
+                    "package": "crm-shared-flowComponents",
+                    "versionNumber": "0.4.0.LATEST"
                 }
             ]
-        },
-        {
-            "path": "force-app",
-            "package": "YourPackageName",
-            "versionName": "ver 0.1",
-            "versionNumber": "0.12.0.NEXT",
-            "default": false
         }
     ],
     "namespace": "",
@@ -26,6 +22,7 @@
     "sourceApiVersion": "54.0",
     "packageAliases": {
         "crm-platform-base": "0Ho2o0000008ORmCAM",
-        "crm-henvendelse-base": "0Ho7U000000000kSAA"
+        "crm-henvendelse-base": "0Ho7U000000000kSAA",
+        "crm-shared-flowComponents": "0Ho2o000000fxYJCAY"
     }
 }
