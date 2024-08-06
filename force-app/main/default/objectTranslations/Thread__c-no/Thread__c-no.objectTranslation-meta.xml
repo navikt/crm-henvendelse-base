@@ -32,4 +32,9 @@
     </caseValues>
     <gender>Masculine</gender>
     <nameFieldLabel>Samtale navn</nameFieldLabel>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>Send til sladding</label>
+        <name>Set_To_Redaction</name>
+    </quickActions>
 </CustomObjectTranslation>
