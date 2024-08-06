@@ -35,6 +35,6 @@
     <quickActions>
         <aspect>Master</aspect>
         <label>Send til sladding</label>
-        <name>Set_To_Redaction</name>
+        <name>Set_to_Redaction</name>
     </quickActions>
 </CustomObjectTranslation>
