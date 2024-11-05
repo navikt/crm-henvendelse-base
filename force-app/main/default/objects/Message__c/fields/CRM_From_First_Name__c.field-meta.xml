@@ -4,15 +4,15 @@
     <deprecated>false</deprecated>
     <externalId>false</externalId>
     <formula>IF( CRM_From_Contact__c != null,
-			CRM_From_Contact__r.FirstName,
-			IF(CRM_From_User__c != null,
-						CRM_From_User__r.CRM_NAV_Ident__c,
-						CRM_From_Ident__c 
-					) + &apos; (NAV-enhet &apos; + IF(CRM_From_User__c != null,
-												CRM_From_User__r.Department,
-												CRM_From_NAV_Unit__c)
-			    + &apos;)&apos;
-		)</formula>
+        CRM_From_Contact__r.FirstName,
+        IF(CRM_From_User__c != null,
+        CRM_From_User__r.CRM_NAV_Ident__c,
+        CRM_From_Ident__c
+        ) + &apos; (Nav-enhet &apos; + IF(CRM_From_User__c != null,
+        CRM_From_User__r.Department,
+        CRM_From_NAV_Unit__c)
+        + &apos;)&apos;
+        )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>From First Name</label>
     <required>false</required>
