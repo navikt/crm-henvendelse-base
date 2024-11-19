@@ -16,9 +16,9 @@
                 <label>Sikkerhetshendelse</label>
             </value>
             <value>
-                <fullName>Utenfor NAVs behandlingsområde</fullName>
+                <fullName>Utenfor Navs behandlingsområde</fullName>
                 <default>false</default>
-                <label>Utenfor NAVs behandlingsområde</label>
+                <label>Utenfor Navs behandlingsområde</label>
             </value>
             <value>
                 <fullName>Andre årsaker</fullName>
