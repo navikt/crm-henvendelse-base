@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Status_Image__c</fullName>
+    <description>Displays a badge of the current Status for the case</description>
+    <externalId>false</externalId>
+    <formula>CASE(Status,
+&apos;New&apos;, IMAGE(&apos;/resource/caseStatusOpen&apos;, &apos;Åpen&apos;, 22, 44),
+&apos;Escalated&apos;, IMAGE(&apos;/resource/caseStatusOpen&apos;, &apos;Åpen&apos;, 22, 44),
+&apos;Forwarded&apos;, IMAGE(&apos;/resource/caseStatusOpen&apos;, &apos;Åpen&apos;, 22, 44),
+&apos;On Hold&apos;, IMAGE(&apos;/resource/caseStatusAnswered&apos;, &apos;Besvart&apos;, 22, 58),
+&apos;In progress&apos;, IMAGE(&apos;/resource/caseStatusinProgress&apos;, &apos;Under Arbeid&apos;, 22, 86),
+&apos;Reserved&apos;, IMAGE(&apos;/resource/caseStatusinProgress&apos;, &apos;Under Arbeid&apos;, 22, 86),
+&apos;Closed&apos;, IMAGE(&apos;/resource/caseStatusClosed&apos;, &apos;Lukket&apos;, 22, 53),
+&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status Image</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
