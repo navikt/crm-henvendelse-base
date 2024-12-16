@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRM_Person_Confidentiality__c</fullName>
+    <externalId>false</externalId>
+    <label>Person Confidentiality</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>UGRADERT</fullName>
+                <default>false</default>
+                <label>UGRADERT</label>
+            </value>
+            <value>
+                <fullName>FORTROLIG</fullName>
+                <default>false</default>
+                <label>FORTROLIG</label>
+            </value>
+            <value>
+                <fullName>STRENGT_FORTROLIG_UTLAND</fullName>
+                <default>false</default>
+                <label>STRENGT_FORTROLIG_UTLAND</label>
+            </value>
+            <value>
+                <fullName>STRENGT_FORTROLIG</fullName>
+                <default>false</default>
+                <label>STRENGT_FORTROLIG</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
