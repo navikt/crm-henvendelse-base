@@ -48,18 +48,28 @@ public class ConversationSummaryQueueable implements Queueable {
                       : msg.CRM_From_First_Name__c + ' (' + msg.CRM_From_Ident_Formula__c + ')');
 
             String formattedMessage =
-            '<p><b>' + msg.CRM_Sent_Datetime_Formula__c + '</b></p>' +
-            '<p>' + messageText + '</p>' +
-            '<p>' + senderName + '</p><br>';
+                '<p><b>' +
+                msg.CRM_Sent_Datetime_Formula__c +
+                '</b></p>' +
+                '<p>' +
+                messageText +
+                '</p>' +
+                '<p>' +
+                senderName +
+                '</p><br>';
 
             if (!threadSummaries.containsKey(msg.CRM_Thread__c)) {
-                threadSummaries.put(msg.CRM_Thread__c, new List<String>{formattedMessage});
+                threadSummaries.put(msg.CRM_Thread__c, new List<String>{ formattedMessage });
             } else {
                 threadSummaries.get(msg.CRM_Thread__c).add(formattedMessage);
             }
 
             // Track latest message datetime (skip if event is END_OF_CHAT/JOURNAL and thread type is STO/BTO)
-            if ((msg.CRM_Event_Type__c == 'END_OF_CHAT' || msg.CRM_Event_Type__c == 'JOURNAL') && (msg.CRM_Thread_Type__c == 'STO' || msg.CRM_Thread_Type__c == 'BTO')) {
+            if (
+                (msg.CRM_Event_Type__c == 'END_OF_CHAT' || msg.CRM_Event_Type__c == 'JOURNAL') &&
+                (msg.CRM_Thread_Type__c == 'STO' ||
+                msg.CRM_Thread_Type__c == 'BTO')
+            ) {
                 continue;
             }
             latestMessageDates.put(msg.CRM_Thread__c, msg.CRM_Sent_Datetime_Formula__c);
