@@ -8,6 +8,6 @@ public class ConversationSummaryQueueableHelper {
             return;
         }
 
-        System.enqueueJob(new ConversationSummaryQueueable(threadIds[0]));
+        System.enqueueJob(new ConversationSummaryQueueable(threadIds));
     }
 }
