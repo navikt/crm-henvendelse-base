@@ -19,7 +19,7 @@ public class ConversationSummaryQueueable implements Queueable {
                 CRM_From_Ident_Formula__c
             FROM Message__c
             WHERE CRM_Thread__c IN :threadIds
-            ORDER BY CRM_Sent_Datetime_Formula__c DESC
+            ORDER BY CRM_Sent_Datetime_Formula__c ASC
         ];
 
         if (messages.isEmpty()) {
@@ -29,7 +29,6 @@ public class ConversationSummaryQueueable implements Queueable {
         Map<Id, List<String>> threadSummaries = new Map<Id, List<String>>();
         Map<Id, Datetime> latestMessageDates = new Map<Id, Datetime>();
 
-        List<String> summaryText = new List<String>();
         for (Message__c msg : messages) {
             String messageText = msg.CRM_Message_Text__c;
 
