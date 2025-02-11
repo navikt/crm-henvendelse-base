@@ -1,154 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>53.0</apiVersion>
-    <assignments>
-        <name>Assign_thread_Id</name>
-        <label>Assign thread Id</label>
+    <actionCalls>
+        <name>Run_Conversation_Summary_Queueable</name>
+        <label>Run Conversation Summary Queueable</label>
         <locationX>176</locationX>
-        <locationY>242</locationY>
-        <assignmentItems>
-            <assignToReference>Thread.Id</assignToReference>
-            <operator>Assign</operator>
+        <locationY>134</locationY>
+        <actionName>ConversationSummaryQueueableHelper</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>threadIds</name>
             <value>
                 <elementReference>threadId</elementReference>
             </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue></stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Message</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Set_Conversation_Summary</name>
-        <label>Set Conversation Summary</label>
-        <locationX>352</locationX>
-        <locationY>758</locationY>
-        <assignmentItems>
-            <assignToReference>Thread.CRM_Conversation_Summary__c</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>MessageSummaryText</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Message</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Set_values</name>
-        <label>Set values</label>
-        <locationX>440</locationX>
-        <locationY>566</locationY>
-        <assignmentItems>
-            <assignToReference>Thread.CRM_Latest_Message_Datetime__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Message.CRM_Sent_Datetime_Formula__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Set_Conversation_Summary</targetReference>
-        </connector>
-    </assignments>
-    <decisions>
-        <name>Is_end_of_chat</name>
-        <label>Set Latest Message Datetime?</label>
-        <locationX>352</locationX>
-        <locationY>458</locationY>
-        <defaultConnector>
-            <targetReference>Set_values</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Yes</defaultConnectorLabel>
-        <rules>
-            <name>No_end_of_chat</name>
-            <conditionLogic>(1 OR 2) AND (3 OR 4)</conditionLogic>
-            <conditions>
-                <leftValueReference>Message.CRM_Event_Type__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>END_OF_CHAT</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Message.CRM_Event_Type__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>JOURNAL</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Message.CRM_Thread_Type__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>STO</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Message.CRM_Thread_Type__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>BTO</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Set_Conversation_Summary</targetReference>
-            </connector>
-            <label>No</label>
-        </rules>
-    </decisions>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
     <description>Find all messages related to a thread and generate a new Conversation Summary
         Set the Latest Message Date Time based on the latest message</description>
-    <formulas>
-        <description>generates text for events</description>
-        <name>Message_Text_Formula</name>
-        <dataType>String</dataType>
-        <expression>IF(ISPICKVAL({!Message.CRM_Type__c},&apos;Event&apos;),
-            IF(ISPICKVAL({!Message.CRM_Event_Type__c},&apos;END_OF_CHAT&apos;),
-            &apos;Samtalen ble avsluttet&apos;,
-            IF(OR(ISPICKVAL({!Message.CRM_Event_Type__c},&apos;QUEUE_TRANSFER&apos;),ISPICKVAL({!Message.CRM_Event_Type__c},&apos;UNIT_TRANSFER&apos;)),
-            &apos;Samtalen er overført til avdeling &apos; + {!Message.CRM_Message_Text__c},
-            SUBSTITUTE({!Message.CRM_Message_Text__c},
-            MID({!LineBreakString},2,1),&apos;&lt;br&gt;&apos;)
-            )
-            ),
-            SUBSTITUTE({!Message.CRM_Message_Text__c},
-            MID({!LineBreakString},2,1),&apos;&lt;br&gt;&apos;)
-            )</expression>
-    </formulas>
-    <formulas>
-        <name>SenderNameFormula</name>
-        <dataType>String</dataType>
-        <expression>IF({!Message.CRM_External_Message__c},
-            {!Message.CRM_From_First_Name__c},
-            IF(ISBLANK({!Message.CRM_From_Ident_Formula__c}),
-            &apos;&apos;,
-            {!Message.CRM_From_First_Name__c} +&apos;(&apos; + {!Message.CRM_From_Ident_Formula__c}
-            + &apos;)&apos;
-            )
-            )</expression>
-    </formulas>
     <interviewLabel>Thread - Sub Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Thread - Subflow - Recalculate Message Summary</label>
-    <loops>
-        <name>Message</name>
-        <label>Message</label>
-        <locationX>176</locationX>
-        <locationY>350</locationY>
-        <collectionReference>Message_Collection</collectionReference>
-        <iterationOrder>Desc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Is_end_of_chat</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Update_thread</targetReference>
-        </noMoreValuesConnector>
-    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -168,71 +39,14 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Message_Collection</name>
-        <label>Message Collection</label>
-        <locationX>176</locationX>
-        <locationY>134</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Assign_thread_Id</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>CRM_Thread__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>threadId</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>Message__c</object>
-        <sortField>CRM_Sent_Datetime_Formula__c</sortField>
-        <sortOrder>Desc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordUpdates>
-        <name>Update_thread</name>
-        <label>Update thread</label>
-        <locationX>176</locationX>
-        <locationY>950</locationY>
-        <inputReference>Thread</inputReference>
-    </recordUpdates>
     <start>
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Message_Collection</targetReference>
+            <targetReference>Run_Conversation_Summary_Queueable</targetReference>
         </connector>
     </start>
     <status>Active</status>
-    <textTemplates>
-        <description>dirty hack to substitute linebreak in messages with &lt;br&gt; tag</description>
-        <name>LineBreakString</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>a
-            b</text>
-    </textTemplates>
-    <textTemplates>
-        <name>MessageSummaryText</name>
-        <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>&lt;p&gt;&lt;b&gt;{!Message.CRM_Sent_Datetime_Formula__c}&lt;/b&gt;&lt;/p&gt;&lt;p&gt;{!Message_Text_Formula}&lt;/p&gt;&lt;p&gt;{!SenderNameFormula}
-            &lt;/p&gt;&lt;br&gt;</text>
-    </textTemplates>
-    <variables>
-        <name>lastMessageDate</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>summaryString</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
     <variables>
         <name>Thread</name>
         <dataType>SObject</dataType>
