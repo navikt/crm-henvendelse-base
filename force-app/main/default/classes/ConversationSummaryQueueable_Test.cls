@@ -8,14 +8,30 @@ private class ConversationSummaryQueueable_Test {
         List<Message__c> messages = new List<Message__c>{
             new Message__c(CRM_Thread__c = thread.Id, CRM_Message_Text__c = 'test'),
             new Message__c(CRM_Thread__c = thread.Id, CRM_Message_Text__c = '123'),
-            new Message__c(CRM_Thread__c = thread.Id, CRM_Type__c = 'Event', CRM_Event_Type__c = 'QUEUE_TRANSFER', CRM_Message_Text__c = 'event'),
-            new Message__c(CRM_Thread__c = thread.Id, CRM_Type__c = 'Event', CRM_Event_Type__c = 'JOURNAL', CRM_Message_Text__c = 'Journal'),
-            new Message__c(CRM_Thread__c = thread.Id, CRM_Type__c = 'Event', CRM_Event_Type__c = 'END_OF_CHAT', CRM_From_Ident__c = 'ABC123', CRM_Message_Text__c = 'end')
+            new Message__c(
+                CRM_Thread__c = thread.Id,
+                CRM_Type__c = 'Event',
+                CRM_Event_Type__c = 'QUEUE_TRANSFER',
+                CRM_Message_Text__c = 'event'
+            ),
+            new Message__c(
+                CRM_Thread__c = thread.Id,
+                CRM_Type__c = 'Event',
+                CRM_Event_Type__c = 'JOURNAL',
+                CRM_Message_Text__c = 'Journal'
+            ),
+            new Message__c(
+                CRM_Thread__c = thread.Id,
+                CRM_Type__c = 'Event',
+                CRM_Event_Type__c = 'END_OF_CHAT',
+                CRM_From_Ident__c = 'ABC123',
+                CRM_Message_Text__c = 'end'
+            )
         };
         insert messages;
 
         Test.startTest();
-        ConversationSummaryQueueableHelper.runQueueable(new List<Id>{thread.Id});
+        ConversationSummaryQueueableHelper.runQueueable(new List<Id>{ thread.Id });
         Test.stopTest();
 
         thread = [SELECT CRM_Conversation_Summary__c FROM Thread__c WHERE Id = :thread.Id LIMIT 1];
