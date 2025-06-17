@@ -49,10 +49,6 @@
     <picklistValues>
         <picklist>Cause__c</picklist>
         <values>
-            <fullName>Andre årsaker</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Ikke statlig dialog</fullName>
             <default>false</default>
         </values>
