@@ -17,11 +17,6 @@
                 <label>Sendt feil bruker</label>
             </value>
             <value>
-                <fullName>Annen årsak</fullName>
-                <default>false</default>
-                <label>Annen årsak</label>
-            </value>
-            <value>
                 <fullName>Ikke statlig dialog</fullName>
                 <default>false</default>
                 <label>Ikke statlig dialog</label>
@@ -30,6 +25,12 @@
                 <fullName>Sensitive personopplysninger</fullName>
                 <default>false</default>
                 <label>Sensitive personopplysninger</label>
+            </value>
+            <value>
+                <fullName>annen årsak</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>annen årsak</label>
             </value>
         </valueSetDefinition>
     </valueSet>

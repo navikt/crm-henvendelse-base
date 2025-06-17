@@ -3,11 +3,6 @@
     <label>Årsak</label>
     <name>Cause__c</name>
     <picklistValues>
-        <masterLabel>Andre årsaker</masterLabel>
-        <translation><!-- Andre årsaker -->
-        </translation>
-    </picklistValues>
-    <picklistValues>
         <masterLabel>Sikkerhetshendelse</masterLabel>
         <translation><!-- Sikkerhetshendelse -->
         </translation>

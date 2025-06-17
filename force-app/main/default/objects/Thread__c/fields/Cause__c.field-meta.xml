@@ -21,11 +21,6 @@
                 <label>Utenfor Navs behandlingsområde</label>
             </value>
             <value>
-                <fullName>Andre årsaker</fullName>
-                <default>false</default>
-                <label>Andre årsaker</label>
-            </value>
-            <value>
                 <fullName>Ikke statlig dialog</fullName>
                 <default>false</default>
                 <label>Ikke statlig dialog</label>
@@ -39,6 +34,12 @@
                 <fullName>Sensitive personopplysninger</fullName>
                 <default>false</default>
                 <label>Sensitive personopplysninger</label>
+            </value>
+            <value>
+                <fullName>Andre årsaker</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Andre årsaker</label>
             </value>
         </valueSetDefinition>
     </valueSet>
