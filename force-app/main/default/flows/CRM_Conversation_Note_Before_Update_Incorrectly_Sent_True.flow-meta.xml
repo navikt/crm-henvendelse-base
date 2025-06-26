@@ -10,7 +10,7 @@
             <assignToReference>$Record.CRM_Incorrectly_Sent_Activated_By__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.CRM_Last_Edited_By__c</elementReference>
+                <elementReference>$Record.CRM_Redaction_Activated_By__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>

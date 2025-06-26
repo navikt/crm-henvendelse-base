@@ -63,7 +63,7 @@
         <inputAssignments>
             <field>STO_Sensitive_Information_Activated_By__c</field>
             <value>
-                <elementReference>$Record.CRM_Last_Edited_By__c</elementReference>
+                <elementReference>$Record.CRM_Redaction_Activated_By__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
