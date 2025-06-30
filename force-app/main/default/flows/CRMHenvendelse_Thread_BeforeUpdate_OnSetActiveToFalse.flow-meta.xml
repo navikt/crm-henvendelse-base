@@ -4,7 +4,7 @@
     <assignments>
         <name>Assign_on_close_values</name>
         <label>Assign on close values</label>
-        <locationX>732</locationX>
+        <locationX>776</locationX>
         <locationY>287</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Closed_Date__c</assignToReference>
@@ -20,7 +20,7 @@
     <decisions>
         <name>Check_Thread_Record_Type</name>
         <label>Check Thread Record Type</label>
-        <locationX>732</locationX>
+        <locationX>776</locationX>
         <locationY>395</locationY>
         <defaultConnectorLabel>Is Other Thread Type</defaultConnectorLabel>
         <rules>
@@ -136,35 +136,13 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>Get_Account</name>
-        <label>Get Account</label>
-        <locationX>50</locationX>
-        <locationY>719</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Get_Person_Ident</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>PersonContactId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Contact_Id_From_User.ParentId</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Account</object>
-        <queriedFields>Id</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_Contact_Id_From_User</name>
         <label>Get Contact Id From User</label>
         <locationX>50</locationX>
         <locationY>611</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Account</targetReference>
+            <targetReference>Get_Person_Ident</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -184,7 +162,7 @@
         <name>Get_Person_Ident</name>
         <label>Get Person Ident</label>
         <locationX>50</locationX>
-        <locationY>827</locationY>
+        <locationY>719</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Update_Closed_By_to_Experience_Site_User</targetReference>
@@ -194,7 +172,7 @@
             <field>CRM_Account__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>Get_Account.Id</elementReference>
+                <elementReference>Get_Contact_Id_From_User.ParentId</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -233,7 +211,7 @@
         <name>Update_Closed_By_to_Experience_Site_User</name>
         <label>Update Closed By to Experience Site User</label>
         <locationX>50</locationX>
-        <locationY>935</locationY>
+        <locationY>827</locationY>
         <inputAssignments>
             <field>CRM_Closed_By__c</field>
             <value>
@@ -243,7 +221,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>606</locationX>
+        <locationX>650</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Assign_on_close_values</targetReference>
