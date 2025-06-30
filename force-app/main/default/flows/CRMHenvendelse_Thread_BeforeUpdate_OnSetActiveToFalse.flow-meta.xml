@@ -4,8 +4,8 @@
     <assignments>
         <name>Assign_on_close_values</name>
         <label>Assign on close values</label>
-        <locationX>176</locationX>
-        <locationY>311</locationY>
+        <locationX>732</locationX>
+        <locationY>287</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Closed_Date__c</assignToReference>
             <operator>Assign</operator>
@@ -13,7 +13,106 @@
                 <elementReference>$Flow.CurrentDateTime</elementReference>
             </value>
         </assignmentItems>
+        <connector>
+            <targetReference>Check_Thread_Record_Type</targetReference>
+        </connector>
     </assignments>
+    <decisions>
+        <name>Check_Thread_Record_Type</name>
+        <label>Check Thread Record Type</label>
+        <locationX>732</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Is Other Thread Type</defaultConnectorLabel>
+        <rules>
+            <name>Is_NKS_Thread</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NKS Thread</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_by_which_user</targetReference>
+            </connector>
+            <label>Is NKS Thread</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Since the CRM_Closed_By__c value is updated when handling the request in the henvendelses-api in the Apex class, we only need to set it when it&apos;s closed in Salesforce.</description>
+        <name>Closed_by_which_user</name>
+        <label>Closed by which user?</label>
+        <locationX>446</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Henvendelses-API</defaultConnectorLabel>
+        <rules>
+            <name>Experience_Site_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.CRM_NAV_Ident__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.CRM_Integration_User__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.NKS_FullName__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Automated Process</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_Id_From_User</targetReference>
+            </connector>
+            <label>Experience Site User</label>
+        </rules>
+        <rules>
+            <name>Automated_Process</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.NKS_FullName__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Automated Process</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$User.CRM_NAV_Ident__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Closed_By_to_Automated_Process</targetReference>
+            </connector>
+            <label>Automated Process</label>
+        </rules>
+        <rules>
+            <name>Salesforce_Nav_Employee</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.CRM_NAV_Ident__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Closed_By_field</targetReference>
+            </connector>
+            <label>Salesforce Nav Employee</label>
+        </rules>
+    </decisions>
     <description>Set Close Date on Thread</description>
     <interviewLabel>Thread - Before Update - On Set Active To False {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Thread - Before Update - On Set Active To False</label>
@@ -36,8 +135,115 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <start>
+    <recordLookups>
+        <name>Get_Account</name>
+        <label>Get Account</label>
         <locationX>50</locationX>
+        <locationY>719</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Person_Ident</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PersonContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact_Id_From_User.ParentId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_Id_From_User</name>
+        <label>Get Contact Id From User</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PersonContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.ContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>ParentId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Person_Ident</name>
+        <label>Get Person Ident</label>
+        <locationX>50</locationX>
+        <locationY>827</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Closed_By_to_Experience_Site_User</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CRM_Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Account.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Person__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Closed_By_field</name>
+        <label>Update Closed By field</label>
+        <locationX>578</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>CRM_Closed_By__c</field>
+            <value>
+                <elementReference>$User.CRM_NAV_Ident__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Closed_By_to_Automated_Process</name>
+        <label>Update Closed By to Automated Process</label>
+        <locationX>314</locationX>
+        <locationY>611</locationY>
+        <inputAssignments>
+            <field>CRM_Closed_By__c</field>
+            <value>
+                <stringValue>Systembruker</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Closed_By_to_Experience_Site_User</name>
+        <label>Update Closed By to Experience Site User</label>
+        <locationX>50</locationX>
+        <locationY>935</locationY>
+        <inputAssignments>
+            <field>CRM_Closed_By__c</field>
+            <value>
+                <elementReference>Get_Person_Ident.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>606</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Assign_on_close_values</targetReference>

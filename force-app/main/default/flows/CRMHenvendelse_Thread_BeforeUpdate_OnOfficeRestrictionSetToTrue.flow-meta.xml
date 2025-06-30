@@ -5,7 +5,7 @@
         <name>Set_office_restriction_date</name>
         <label>Set office restriction date</label>
         <locationX>182</locationX>
-        <locationY>647</locationY>
+        <locationY>587</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Office_Restriction_Date__c</assignToReference>
             <operator>Assign</operator>
@@ -18,7 +18,7 @@
         <name>Update_office_restriction_info</name>
         <label>Update office restriction info</label>
         <locationX>50</locationX>
-        <locationY>431</locationY>
+        <locationY>395</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Office_Restriction_Activated_By__c</assignToReference>
             <operator>Assign</operator>
@@ -34,12 +34,19 @@
         <name>Update_office_restriction_info_SF</name>
         <label>Update office restriction info SF</label>
         <locationX>314</locationX>
-        <locationY>431</locationY>
+        <locationY>395</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Office_Restriction_Activated_By__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</elementReference>
+                <elementReference>$User.CRM_NAV_Ident__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CRM_Redaction_Activated_By__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.CRM_NAV_Ident__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -50,7 +57,7 @@
         <name>How_was_office_restrictions_activated</name>
         <label>How was office restrictions activated</label>
         <locationX>182</locationX>
-        <locationY>311</locationY>
+        <locationY>287</locationY>
         <defaultConnector>
             <targetReference>Update_office_restriction_info_SF</targetReference>
         </defaultConnector>
@@ -62,7 +69,7 @@
                 <leftValueReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue/>
+                    <stringValue></stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -119,5 +126,5 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>

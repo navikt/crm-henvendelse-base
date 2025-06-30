@@ -6,7 +6,7 @@
         <name>Check_Sensitive_Information_Activated_By</name>
         <label>Check Sensitive Information Activated By</label>
         <locationX>182</locationX>
-        <locationY>311</locationY>
+        <locationY>287</locationY>
         <defaultConnector>
             <targetReference>Updated_Sensitive_Information_Info_1</targetReference>
         </defaultConnector>
@@ -18,7 +18,7 @@
                 <leftValueReference>$User.CRM_NAV_Ident__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue/>
+                    <stringValue></stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -59,7 +59,7 @@
         <name>Updated_Sensitive_Information_Info_0</name>
         <label>Updated Sensitive Information Info</label>
         <locationX>50</locationX>
-        <locationY>431</locationY>
+        <locationY>395</locationY>
         <inputAssignments>
             <field>STO_Sensitive_Information_Activated_By__c</field>
             <value>
@@ -78,7 +78,13 @@
         <name>Updated_Sensitive_Information_Info_1</name>
         <label>Updated Sensitive Information Info</label>
         <locationX>314</locationX>
-        <locationY>431</locationY>
+        <locationY>395</locationY>
+        <inputAssignments>
+            <field>CRM_Redaction_Activated_By__c</field>
+            <value>
+                <elementReference>$User.CRM_NAV_Ident__c</elementReference>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>STO_Sensitive_Information_Activated_By__c</field>
             <value>
