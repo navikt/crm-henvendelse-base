@@ -5,12 +5,12 @@
         <name>Set_Incorrectly_Sent_Info</name>
         <label>Set Incorrectly Sent Info</label>
         <locationX>50</locationX>
-        <locationY>431</locationY>
+        <locationY>395</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Incorrectly_Sent_Activated_By__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.CRM_Last_Edited_By__c</elementReference>
+                <elementReference>$Record.CRM_Redaction_Activated_By__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -25,12 +25,12 @@
         <name>Set_Incorrectly_Sent_Info_0</name>
         <label>Set Incorrectly Sent Info</label>
         <locationX>314</locationX>
-        <locationY>431</locationY>
+        <locationY>395</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Incorrectly_Sent_Activated_By__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</elementReference>
+                <elementReference>$User.CRM_NAV_Ident__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -40,13 +40,20 @@
                 <elementReference>$Flow.CurrentDateTime</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.CRM_Redaction_Activated_By__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.CRM_NAV_Ident__c</elementReference>
+            </value>
+        </assignmentItems>
     </assignments>
     <decisions>
         <description>Checks which user that set Incorrectly sent to true</description>
         <name>Check_Incorrectly_Sent_Activated_By</name>
         <label>Check Incorrectly Sent Activated By</label>
         <locationX>182</locationX>
-        <locationY>311</locationY>
+        <locationY>287</locationY>
         <defaultConnector>
             <targetReference>Set_Incorrectly_Sent_Info_0</targetReference>
         </defaultConnector>
@@ -58,7 +65,7 @@
                 <leftValueReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue/>
+                    <stringValue></stringValue>
                 </rightValue>
             </conditions>
             <conditions>
