@@ -5,8 +5,8 @@
         <description>Checks which user that activated the office restriction</description>
         <name>Check_Office_Restriction_Activated_By</name>
         <label>Check Office Restriction Activated By</label>
-        <locationX>182</locationX>
-        <locationY>311</locationY>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
         <defaultConnector>
             <targetReference>Updated_office_restriction_info_0</targetReference>
         </defaultConnector>
@@ -18,7 +18,7 @@
                 <leftValueReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue />
+                    <stringValue></stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -28,9 +28,6 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>Updated_office_restriction_info</targetReference>
-            </connector>
             <label>Activated Through API</label>
         </rules>
     </decisions>
@@ -58,29 +55,10 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
-        <name>Updated_office_restriction_info</name>
-        <label>Updated office restriction info</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
-        <inputAssignments>
-            <field>CRM_Office_Restriction_Activated_By__c</field>
-            <value>
-                <elementReference>$Record.CRM_Last_Edited_By__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>CRM_Office_Restriction_Date__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
         <name>Updated_office_restriction_info_0</name>
         <label>Updated office restriction info</label>
-        <locationX>314</locationX>
-        <locationY>431</locationY>
+        <locationX>308</locationX>
+        <locationY>395</locationY>
         <inputAssignments>
             <field>CRM_Office_Restriction_Activated_By__c</field>
             <value>
@@ -96,7 +74,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_Office_Restriction_Activated_By</targetReference>
@@ -114,5 +92,5 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>

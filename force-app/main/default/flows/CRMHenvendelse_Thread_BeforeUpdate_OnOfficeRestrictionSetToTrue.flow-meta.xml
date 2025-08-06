@@ -2,10 +2,17 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>53.0</apiVersion>
     <assignments>
-        <name>Set_office_restriction_date</name>
-        <label>Set office restriction date</label>
-        <locationX>182</locationX>
-        <locationY>647</locationY>
+        <name>Update_office_restriction_info_SF</name>
+        <label>Update office restriction info SF</label>
+        <locationX>308</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.CRM_Office_Restriction_Activated_By__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</elementReference>
+            </value>
+        </assignmentItems>
         <assignmentItems>
             <assignToReference>$Record.CRM_Office_Restriction_Date__c</assignToReference>
             <operator>Assign</operator>
@@ -14,43 +21,11 @@
             </value>
         </assignmentItems>
     </assignments>
-    <assignments>
-        <name>Update_office_restriction_info</name>
-        <label>Update office restriction info</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.CRM_Office_Restriction_Activated_By__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CRM_Last_Edited_By__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Set_office_restriction_date</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Update_office_restriction_info_SF</name>
-        <label>Update office restriction info SF</label>
-        <locationX>314</locationX>
-        <locationY>431</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.CRM_Office_Restriction_Activated_By__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Set_office_restriction_date</targetReference>
-        </connector>
-    </assignments>
     <decisions>
         <name>How_was_office_restrictions_activated</name>
         <label>How was office restrictions activated</label>
-        <locationX>182</locationX>
-        <locationY>311</locationY>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
         <defaultConnector>
             <targetReference>Update_office_restriction_info_SF</targetReference>
         </defaultConnector>
@@ -62,7 +37,7 @@
                 <leftValueReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue />
+                    <stringValue></stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -72,9 +47,6 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>Update_office_restriction_info</targetReference>
-            </connector>
             <label>Activated By API</label>
         </rules>
     </decisions>
@@ -102,7 +74,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>56</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>How_was_office_restrictions_activated</targetReference>
@@ -120,5 +92,5 @@
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>
