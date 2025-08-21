@@ -2,35 +2,15 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>52.0</apiVersion>
     <assignments>
-        <name>Set_Incorrectly_Sent_Info</name>
-        <label>Set Incorrectly Sent Info</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.CRM_Incorrectly_Sent_Activated_By__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.CRM_Last_Edited_By__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.CRM_Incorrectly_Sent_Date__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <assignments>
         <name>Set_Incorrectly_Sent_Info_0</name>
         <label>Set Incorrectly Sent Info</label>
-        <locationX>314</locationX>
-        <locationY>431</locationY>
+        <locationX>308</locationX>
+        <locationY>395</locationY>
         <assignmentItems>
             <assignToReference>$Record.CRM_Incorrectly_Sent_Activated_By__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</elementReference>
+                <elementReference>$User.CRM_NAV_Ident__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -45,8 +25,8 @@
         <description>Checks which user that set Incorrectly sent to true</description>
         <name>Check_Incorrectly_Sent_Activated_By</name>
         <label>Check Incorrectly Sent Activated By</label>
-        <locationX>182</locationX>
-        <locationY>311</locationY>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
         <defaultConnector>
             <targetReference>Set_Incorrectly_Sent_Info_0</targetReference>
         </defaultConnector>
@@ -58,7 +38,7 @@
                 <leftValueReference>$Record.LastModifiedBy.CRM_NAV_Ident__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue/>
+                    <stringValue></stringValue>
                 </rightValue>
             </conditions>
             <conditions>
@@ -68,9 +48,6 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>Set_Incorrectly_Sent_Info</targetReference>
-            </connector>
             <label>Activated Through API</label>
         </rules>
     </decisions>
@@ -97,7 +74,7 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>56</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Check_Incorrectly_Sent_Activated_By</targetReference>
