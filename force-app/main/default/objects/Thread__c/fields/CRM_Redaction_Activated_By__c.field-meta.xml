@@ -3,7 +3,7 @@
     <fullName>CRM_Redaction_Activated_By__c</fullName>
     <description>NAV ident of the user who activated redaction on the record.</description>
     <externalId>true</externalId>
-    <label>Last Edited By</label>
+    <label>Redaction Activated By</label>
     <length>48</length>
     <required>false</required>
     <trackTrending>false</trackTrending>
