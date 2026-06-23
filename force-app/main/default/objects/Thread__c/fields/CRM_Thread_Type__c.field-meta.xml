@@ -87,16 +87,6 @@
                 <default>false</default>
                 <label>HOT_TOLK-TOLK</label>
             </value>
-            <value>
-                <fullName>HOT_TJENESTELEVERANDOR-FORMIDLER</fullName>
-                <default>false</default>
-                <label>HOT_TJENESTELEVERANDOR-FORMIDLER</label>
-            </value>
-            <value>
-                <fullName>HOT_TJENESTELEVERANDOR-TOLK</fullName>
-                <default>false</default>
-                <label>HOT_TJENESTELEVERANDOR-TOLK</label>
-            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
