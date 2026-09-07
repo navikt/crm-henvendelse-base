@@ -3,7 +3,7 @@
     <fullName>CRM_Journal_Case_Reference__c</fullName>
     <externalId>false</externalId>
     <label>Journal Case Reference</label>
-    <length>32</length>
+    <length>64</length>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
