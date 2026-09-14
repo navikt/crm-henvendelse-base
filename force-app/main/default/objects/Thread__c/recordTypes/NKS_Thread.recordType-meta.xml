@@ -75,6 +75,10 @@
             <fullName>Fedrekvotesaken</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>Uforekampanje</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>STO_Category__c</picklist>
