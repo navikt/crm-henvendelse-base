@@ -4,11 +4,31 @@
             "path": "force-app",
             "default": true,
             "package": "crm-henvendelse-base",
-            "versionNumber": "0.40.0.NEXT",
+            "versionNumber": "0.41.0.NEXT",
             "dependencies": [
                 {
+                    "package": "platform-data-model",
+                    "versionNumber": "0.1.33.LATEST",
+                    "branch": ""
+                },
+                {
+                    "package": "custom-metadata-dao",
+                    "versionNumber": "0.1.33.LATEST",
+                    "branch": ""
+                },
+                {
+                    "package": "custom-permission-helper",
+                    "versionNumber": "0.1.33.LATEST",
+                    "branch": ""
+                },
+                {
+                    "package": "feature-toggle",
+                    "versionNumber": "0.1.34.LATEST",
+                    "branch": ""
+                },
+                {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.218.0.LATEST"
+                    "versionNumber": "0.309.0.LATEST"
                 },
                 {
                     "package": "crm-shared-flowComponents",
@@ -19,10 +39,20 @@
     ],
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "54.0",
+    "sourceApiVersion": "67.0",
     "packageAliases": {
         "crm-platform-base": "0Ho2o0000008ORmCAM",
         "crm-henvendelse-base": "0Ho7U000000000kSAA",
-        "crm-shared-flowComponents": "0Ho2o000000fxYJCAY"
+        "crm-shared-flowComponents": "0Ho2o000000fxYJCAY",
+        "platform-data-model": "0HoKB00000000010AA",
+        "custom-metadata-dao": "0HoKB000000000B0AQ",
+        "custom-permission-helper": "0HoKB000000000f0AA",
+        "feature-toggle": "0HoKB000000000V0AQ"
+    },
+    "packageKeyConfig": {
+        "platform-data-model": false,
+        "custom-metadata-dao": false,
+        "custom-permission-helper": false,
+        "feature-toggle": false
     }
 }
