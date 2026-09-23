@@ -97,6 +97,11 @@
                 <default>false</default>
                 <label>HOT_TJENESTELEVERANDOR-TOLK</label>
             </value>
+            <value>
+                <fullName>HOT_TJENESTELEVERANDOR-HONORAR</fullName>
+                <default>false</default>
+                <label>HOT_TJENESTELEVERANDOR-HONORAR</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
