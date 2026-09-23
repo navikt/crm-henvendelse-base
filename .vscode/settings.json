@@ -29,5 +29,6 @@
         "**/.vscode": true,
         "**/.idea": true
     },
-    "notebook.diff.ignoreMetadata": false
+    "notebook.diff.ignoreMetadata": false,
+    "xml.preferences.showSchemaDocumentationType": "none"
 }
